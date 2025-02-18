@@ -70,7 +70,7 @@ const Register = () => {
         </form>
 
         <p className="mt-4 text-sm text-center text-[#9EA3BF]">
-          Déjà un compte ? <a href="/login" className="text-[#47CC88]">Se connecter</a>
+          Déjà un compte ? <a href="/pages/login" className="text-[#47CC88]">Se connecter</a>
         </p>
       </div>
     </div>
