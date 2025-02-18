@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-28 py-4 bg-white shadow-md">
+    <nav className="flex items-center justify-between px-40 py-7 bg-white shadow-md">
       {/* Logo */}
-      <div className="flex items-center space-x-2">
+      <Link href="https://ventyra-cybersecurity.framer.website/" className="flex items-center space-x-5">
         <Image
           src="/ventyra-logo.png"
           alt="Ventyra"
@@ -13,24 +13,24 @@ const Navbar = () => {
           height={60}
         />
         <span className="text-[#02BD92] text-2xl">VENTYRA</span>
-      </div>
+      </Link>
 
       {/* Liens */}
-      <div className="flex space-x-6 text-[#006C65]">
-        <Link href="/formation" className="hover:text-[#02BD92]">
+      <div className="flex space-x-7 text-[#006C65]">
+        <Link href="/formation" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
           Formation
         </Link>
-        <Link href="/accueil" className="hover:text-[#02BD92]">
+        <Link href="/accueil" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
           Accueil
         </Link>
-        <Link href="/quiz" className="hover:text-[#02BD92]">
+        <Link href="/quiz" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
           Quiz
         </Link>
       </div>
 
       {/* Bouton Contact */}
-      <Link href="/contact">
-        <button className="px-4 py-2 rounded-lg text-white bg-gradient-to-r from-teal-500 to-gray-900 hover:opacity-90">
+      <Link href="/contact"> {/* mettre lien framer contact, ou alors coder page contact si pas possible sur framer */}
+        <button className="px-6 py-4 ml-20 rounded-xl text-white bg-gradient-to-r from-[#02BD92] to-[#032720] hover:from-[#032720] hover:to-[#02BD92]">
           Contact
         </button>
       </Link>
