@@ -28,7 +28,12 @@ export async function POST(req: NextRequest) {
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
     return NextResponse.json({ token }, { status: 201 });
-  } catch (_err) {
-    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
+  } catch {
+    return new Response(
+      JSON.stringify({
+        error: "Une erreur s'est produite lors de l'inscription.",
+      }),
+      { status: 500 }
+    );
   }
 }

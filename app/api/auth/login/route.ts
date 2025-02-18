@@ -29,9 +29,9 @@ export async function POST(request: NextRequest) {
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
     return NextResponse.json({ token }, { status: 200 });
-  } catch (_err) {
+  } catch {
     return NextResponse.json(
-      { error: 'Erreur serveur' },
+      { error: "Une erreur s'est produite lors de la connexion." },
       { status: 500 }
     );
   }
