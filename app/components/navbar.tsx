@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-40 py-7 bg-white shadow-md">
+    <nav className="flex items-center justify-between px-40 py-7 bg-white shadow-md absolute top-0 left-0 w-full">
       {/* Logo */}
       <Link href="https://ventyra-cybersecurity.framer.website/" className="flex items-center space-x-5">
         <Image
@@ -17,10 +17,10 @@ const Navbar = () => {
 
       {/* Liens */}
       <div className="flex space-x-7 text-[#006C65]">
-        <Link href="/formation" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
+        <Link href="https://ventyra-cybersecurity.framer.website/#features" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
           Formation
         </Link>
-        <Link href="/accueil" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
+        <Link href="https://ventyra-cybersecurity.framer.website/" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
           Accueil
         </Link>
         <Link href="/quiz" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
