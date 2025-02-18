@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
     return NextResponse.json({ token }, { status: 201 });
-  } catch (err) {
+  } catch (_err) {
     return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
   }
 }
