@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
     return NextResponse.json({ token }, { status: 200 });
-  } catch (error) {
+  } catch (err) {
     return NextResponse.json(
       { error: 'Erreur serveur' },
       { status: 500 }

@@ -70,6 +70,10 @@ const Register = () => {
         <p className="mt-4 text-sm text-center">
           Déjà un compte ? <a href="/login" className="text-blue-500">Se connecter</a>
         </p>
+
+        <p className="mt-4 text-sm text-center">
+          Don&apos;t have an account? <a href="/login" className="text-blue-500">Se connecter</a>
+        </p>
       </div>
     </div>
   );
