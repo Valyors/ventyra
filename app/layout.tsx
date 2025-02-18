@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sora.variable}`}>
+      <body className={`${sora.variable} bg-[#032720]`}>
         {children}
       </body>
     </html>
