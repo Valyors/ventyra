@@ -3,7 +3,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 interface LeaderboardEntry {
   email: string;
@@ -14,7 +13,6 @@ export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
