@@ -1,10 +1,9 @@
-// app/api/quiz/[quizId]/route.ts
-
 import { NextResponse } from "next/server";
 import prisma from "../../../lib/prisma";
+import type { NextRequest } from "next/server";
 
-export async function GET(req: Request, context: { params: { quizId: string } }) {
-  const { quizId } = context.params;
+export async function GET(req: NextRequest, { params }: { params: { quizId: string } }) {
+  const { quizId } = params;
 
   try {
     const quiz = await prisma.quiz.findUnique({
