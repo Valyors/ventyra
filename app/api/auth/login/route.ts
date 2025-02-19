@@ -1,3 +1,5 @@
+// app/api/auth/login/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -28,7 +30,10 @@ export async function POST(request: NextRequest) {
     // Créer un JWT
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
+    console.log("🎫 JWT généré (login) :", token); // ✅ Vérification
+
     return NextResponse.json({ token }, { status: 200 });
+
   } catch {
     return NextResponse.json(
       { error: "Une erreur s'est produite lors de la connexion." },

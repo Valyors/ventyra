@@ -14,8 +14,54 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id       Int     @id @default(autoincrement()) // ID auto-incrémenté
+  email    String  @unique
+  password String
+  quizzes  UserQuiz[]
+  groupId  Int?    @unique // L'utilisateur appartient à un seul groupe
+  group    Group?  @relation(fields: [groupId], references: [id])
+}
+
+model Quiz {
+  id       String    @id @default(uuid())
+  title    String
+  order    Int       @unique
+  status   String    @default("LOCKED") // LOCKED | UNLOCKED
+  questions Question[]
+  users    UserQuiz[]
+}
+
+model Question {
+  id       String  @id @default(uuid())
+  quiz     Quiz    @relation(fields: [quizId], references: [id])
+  quizId   String
+  text     String
+  answers  Answer[]
+}
+
+model Answer {
+  id         String   @id @default(uuid())
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId String
+  text       String
+  isCorrect  Boolean
+}
+
+model UserQuiz {
+  id         String  @id @default(uuid())
+  user       User    @relation(fields: [userId], references: [id])
+  userId     Int
+  quiz       Quiz    @relation(fields: [quizId], references: [id])
+  quizId     String
+  score      Float?
+  completedAt DateTime?
+
+  @@unique([userId, quizId]) // 👈 Ajoute cette ligne pour créer une clé unique composite
+}
+
+
+model Group {
+  id    Int     @id @default(autoincrement()) // ID auto-incrémenté
+  code  String  @unique
+  users User[]
 }

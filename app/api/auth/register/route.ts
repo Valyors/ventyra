@@ -1,3 +1,5 @@
+// app/api/auth/register/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -27,7 +29,10 @@ export async function POST(req: NextRequest) {
     // Créer un JWT
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
+    console.log("🎫 JWT généré (register) :", token); // ✅ Vérification
+
     return NextResponse.json({ token }, { status: 201 });
+
   } catch {
     return new Response(
       JSON.stringify({

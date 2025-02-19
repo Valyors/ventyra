@@ -1,3 +1,5 @@
+// app/page.tsx
+
 "use client";
 
 import { useState } from 'react';
@@ -27,7 +29,7 @@ const Register = () => {
 
     if (res.status === 201) {
       // Redirige après l'inscription réussie
-      router.push('/pages/quiz');
+      router.push('/pages/enter-code');
     } else {
       setError(data.error || 'Erreur lors de l\'inscription');
     }
@@ -48,7 +50,7 @@ const Register = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full"
+              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full text-[#032720]"
               required
             />
           </div>
@@ -59,7 +61,7 @@ const Register = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full"
+              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full text-[#032720]"
               required
             />
           </div>

@@ -1,3 +1,5 @@
+// app/pages/login/page.tsx
+
 "use client";
 
 import { useState } from 'react';
@@ -30,7 +32,7 @@ const Login = () => {
       localStorage.setItem('token', data.token);
 
       // Rediriger après la connexion réussie
-      router.push('/pages/quiz'); // Exemple de page à rediriger
+      router.push('/pages/enter-code'); // Exemple de page à rediriger
     } else {
       setError(data.error || 'Erreur lors de la connexion');
     }
@@ -51,7 +53,7 @@ const Login = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full"
+              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full text-[#032720]"
               required
             />
           </div>
@@ -62,7 +64,7 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full"
+              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full text-[#032720]"
               required
             />
           </div>
@@ -73,7 +75,7 @@ const Login = () => {
         </form>
 
         <p className="mt-4 text-sm text-center text-[#9EA3BF]">
-          Pas encore de compte ? <a href="/register" className="text-[#47CC88]">Créer un compte</a>
+          Pas encore de compte ? <a href="/" className="text-[#47CC88]">Créer un compte</a>
         </p>
       </div>
     </div>
