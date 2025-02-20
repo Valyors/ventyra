@@ -2,11 +2,16 @@
 
 import jwt from "jsonwebtoken";
 
-export function verifyToken(token: string) {
+interface DecodedToken {
+  userId: string;
+}
+
+export function verifyToken(token: string): DecodedToken | null {
   try {
-    return jwt.verify(token, process.env.JWT_SECRET!); // Assure-toi que JWT_SECRET est bien défini
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as DecodedToken;
+    return decoded;
   } catch (error) {
-    console.error("Erreur verification token:", error);
+    console.error("Erreur de vérification du token:", error);
     return null;
   }
 }
