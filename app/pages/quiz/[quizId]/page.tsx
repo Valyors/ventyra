@@ -8,18 +8,20 @@ import { useRouter, useParams } from "next/navigation";
 type Question = {
   id: string;
   text: string;
-  answers: { id: string; text: string }[];
+  answers: { id: string; text: string; isCorrect: boolean }[];
 };
 
 export default function QuizPage() {
-  const { quizId } = useParams(); // Récupération correcte des params
+  const { quizId } = useParams(); 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<{ [key: string]: string }>({});
+  const [score, setScore] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    if (!quizId) return; // Évite d'exécuter la requête si quizId est indéfini
+    if (!quizId) return;
 
     const fetchQuestions = async () => {
       try {
@@ -29,6 +31,7 @@ export default function QuizPage() {
         }
         const data = await res.json();
         setQuestions(data.questions || []);
+        console.log("Questions récupérées : ", data.questions);
       } catch (error) {
         console.error(error);
       } finally {
@@ -40,12 +43,11 @@ export default function QuizPage() {
   }, [quizId]);
 
   const handleSubmit = async () => {
+    console.log("Réponses soumises : ", answers); 
     try {
-      const res = await fetch("/api/leaderboard", {
+      const res = await fetch("/api/quiz-submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ quizId, answers }),
       });
 
@@ -54,9 +56,10 @@ export default function QuizPage() {
       }
 
       const data = await res.json();
-      if (data && typeof data.score !== 'undefined') {
-        alert(`Votre score : ${data.score}`);
-        router.push(`/pages/leaderboard`);
+      console.log("Réponse de l'API après soumission : ", data);
+      if (data && typeof data.score !== "undefined") {
+        setScore(data.score);
+        setSubmitted(true);
       } else {
         throw new Error("Format de réponse invalide");
       }
@@ -72,6 +75,7 @@ export default function QuizPage() {
   return (
     <div className="max-w-2xl mx-auto mt-10">
       <h1 className="text-2xl font-bold">Quiz</h1>
+
       {questions.map((q, index) => (
         <div key={q.id} className="mt-4">
           <p className="font-medium">{index + 1}. {q.text}</p>
@@ -81,21 +85,40 @@ export default function QuizPage() {
                 type="radio"
                 name={q.id}
                 value={a.id}
+                disabled={submitted} 
                 onChange={(e) =>
-                  setAnswers((prev) => ({ ...prev, [q.id]: e.target.value }))
+                  setAnswers((prev) => {
+                    const updatedAnswers = { ...prev, [q.id]: e.target.value };
+                    console.log("Réponse sélectionnée par l'utilisateur : ", updatedAnswers); 
+                    return updatedAnswers;
+                  })
                 }
+                checked={answers[q.id] === a.id}
               />
               {a.text}
             </label>
           ))}
         </div>
       ))}
-      <button
-        onClick={handleSubmit}
-        className="mt-6 bg-blue-500 text-white px-4 py-2 rounded-lg"
-      >
-        Soumettre
-      </button>
+
+      {!submitted ? (
+        <button
+          onClick={handleSubmit}
+          className="mt-6 bg-blue-500 text-white px-4 py-2 rounded-lg"
+        >
+          Soumettre
+        </button>
+      ) : (
+        <div className="mt-6">
+          <p className="text-lg font-bold">Votre score : {score} / {questions.length}</p>
+          <button
+            onClick={() => router.push("/pages/leaderboard")}
+            className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
+          >
+            Voir le leaderboard
+          </button>
+        </div>
+      )}
     </div>
   );
 }
