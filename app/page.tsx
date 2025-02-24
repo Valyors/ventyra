@@ -4,8 +4,8 @@
 
 import Navbar from "./components/navbar";
 import Link from "next/link";
-import Image from "next/image";
 import TypingText from "./components/typingText";
+import RotatingImage from "./components/RotatingCard"; 
 
 export default function Home() {
   return (
@@ -14,11 +14,10 @@ export default function Home() {
       <div className="pt-56 px-40">
         <div className="flex justify-between items-center">
           <div className="text-center">
-            {/* Utilisation du composant TypingText */}
             <TypingText />
-            <h2 className="text-base text-[#9EA3BF] py-14">
+            <p className="text-base text-[#9EA3BF] py-14">
               Une formation complète avec des ateliers pratiques pour réduire les risques cyber.
-            </h2>
+            </p>
             <Link
               href="https://ventyra.fr/contact"
               className="bg-[#02BD92] py-4 px-6 rounded-xl text-white text-lg relative overflow-hidden group"
@@ -27,17 +26,22 @@ export default function Home() {
               <span className="relative z-10 group-hover:text-[#02BD92]">Nous contacter</span>
             </Link>
           </div>
-          <div className="relative w-[600px] h-[600px] perspective-1000">
-            <div className="w-full h-full animate-spin-y transform-style-3d">
-              <Image
-                src="/carte-ventyra.png"
-                alt="Ventyra"
-                width={600}
-                height={600}
-                className="absolute rotate-[20deg] inset-0 backface-hidden"
-              />
-            </div>
-          </div>
+          <RotatingImage />
+        </div>
+
+        <div className="flex justify-center py-14">
+          <iframe
+            width="80%"
+            height="535px"
+            src="https://www.youtube.com/embed/-wfVJsvnNLI?autoplay=1&mute=1&loop=1&playlist=-wfVJsvnNLI"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            className="rounded-3xl"
+          ></iframe>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-6xl py-5">Notre Formation</h2>
         </div>
       </div>
     </main>
