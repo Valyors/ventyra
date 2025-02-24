@@ -1,3 +1,5 @@
+// app/components/typingText.tsx
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -31,11 +33,15 @@ const TypingText = () => {
     }, deleting ? 50 : 100);
 
     return () => clearTimeout(timeout);
-  }, [subIndex, deleting, index]);
+  }, [subIndex, deleting, index, phrases]); // Added phrases to dependencies
+
+  useEffect(() => {
+    setText(phrases[index].substring(0, subIndex)); // Update text dynamically
+  }, [subIndex, index, phrases]);
 
   return (
     <h1 className="text-7xl font-bold w-[900px] h-[200px] text-center">
-      {text || phrases[index].substring(0, subIndex)}
+      {text}
       <motion.span
         className="inline-block w-2 h-12 ml-1"
         animate={{ opacity: [1, 0] }}
