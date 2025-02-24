@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      boxShadow: {
+        'custom-inner': 'inset 20px 20px 40px rgba(2, 189, 146, 0.5), inset -20px -20px 40px rgba(2, 189, 146, 0.5)',
+      },
     },
   },
   plugins: [],

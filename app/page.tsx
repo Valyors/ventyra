@@ -6,6 +6,7 @@ import Navbar from "./components/navbar";
 import Link from "next/link";
 import TypingText from "./components/typingText";
 import RotatingImage from "./components/RotatingCard"; 
+import FormationModule from "./components/FormationModule";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         <div className="flex justify-between items-center">
           <div className="text-center">
             <TypingText />
-            <p className="text-base text-[#9EA3BF] py-14">
+            <p className="text-base text-[#9EA3BF] py-14 font-light">
               Une formation complète avec des ateliers pratiques pour réduire les risques cyber.
             </p>
             <Link
@@ -41,9 +42,19 @@ export default function Home() {
         </div>
 
         <div className="text-center">
-          <h2 className="text-6xl py-5">Notre Formation</h2>
+          <h2 className="text-6xl pt-16 pb-5 font-semibold">Notre Formation</h2>
+          <p className="text-base text-[#9EA3BF] font-light pb-5">La formation se déroule sur une journée et est décomposé en 6 modules</p>
+          <FormationModule />
         </div>
+
       </div>
     </main>
   );
 }
+
+
+
+/*
+mettre dans components formation
+mettre p et h1 par defaut
+*/
