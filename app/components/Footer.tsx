@@ -5,34 +5,40 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#032720] text-[#9EA3BF] py-6 px-4">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
-        {/* Logo et Nom */}
+    <div className="h-60 flex flex-col justify-center space-y-5 py-8">
         <div className="flex items-center space-x-4">
-          <Image src="/logo.png" alt="Ventyra Logo" width={40} height={40} />
-          <span className="text-[#47CC88] font-semibold text-lg">VENTYRA</span>
+            <Image src="/ventyra-logo.png" alt="Ventyra Logo" width={60} height={60} />
+            <span className="text-[#02BD92] text-2xl">VENTYRA</span>
+            <p className="text-2xl font-light text-[#9EA3BF] pb-1">|</p>
+            <p className="text-lg font-light text-[#9EA3BF]">Ventyra, jouez la carte de la sécurité.</p>
         </div>
 
-        {/* Slogan */}
-        <p className="text-sm text-center md:text-left">
-          Ventyra, jouez la carte de la sécurité.
-        </p>
-
-        {/* Mentions légales et Réseaux */}
-        <div className="flex items-center space-x-4">
-          <span className="text-sm">Copyright © 2025</span>
-          <span className="text-sm">All Rights Reserved</span>
-          <Link
-            href="https://linkedin.com/company/ventyra"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#9EA3BF] hover:text-[#47CC88] transition"
-          >
-            Linkedin
-          </Link>
+        <div>
+            <hr className="border-t-1 border-[#9EA3BF] my-4" />
         </div>
-      </div>
-    </footer>
+
+        <div className="flex justify-between items-center">
+            <div className="flex flex-col">
+                <span className="text-base text-[#9EA3BF] font-light">Copyright © 2025</span>
+                <span className="text-base text-[#9EA3BF] font-light">All Rights Reserved</span>
+            </div>
+            <div>
+                <Link
+                    href="https://www.linkedin.com/company/ventyra/?viewAsMember=true" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#9EA3BF] hover:text-[#47CC88] transition"
+                >
+                    <Image
+                        src="/linkedin-logo.png"
+                        alt="LinkedIn Logo"
+                        width={40}
+                        height={40}
+                    />
+                </Link>
+            </div>
+        </div>
+    </div>
   );
 };
 
