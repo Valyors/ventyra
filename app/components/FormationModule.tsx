@@ -56,10 +56,10 @@ export default function FormationModule() {
       {modules.map((module, index) => (
         <div
           key={module.id}
-          className={`flex justify-between items-center py-14 gap-14 ${
+          className={`flex justify-between items-center py-14 gap-14 transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#02BD92]/10 hover:border-[#02BD92] border-2 border-transparent rounded-3xl p-6 ${
             index % 2 !== 0 ? "flex-row-reverse" : ""
           }`}
-        >
+        >  
           <div className="relative rounded-3xl shadow-custom-inner">
             <Image
               src={module.image}

@@ -7,6 +7,7 @@ import Link from "next/link";
 import TypingText from "./components/typingText";
 import RotatingImage from "./components/RotatingCard"; 
 import FormationModule from "./components/FormationModule";
+import PourquoiChoisirFormation from "./components/PourquoiChoisirFormation";
 
 export default function Home() {
   return (
@@ -47,14 +48,15 @@ export default function Home() {
           <FormationModule />
         </div>
 
+        <PourquoiChoisirFormation />
+
+        {/* faq */}
+
+
+        {/* qui sommes nous ? */}
+
+
       </div>
     </main>
   );
 }
-
-
-
-/*
-mettre dans components formation
-mettre p et h1 par defaut
-*/
