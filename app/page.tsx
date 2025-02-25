@@ -10,6 +10,7 @@ import FormationModule from "./components/FormationModule";
 import PourquoiChoisirFormation from "./components/PourquoiChoisirFormation";
 import Footer from "./components/Footer";
 import Faq from "./components/Faq";
+import QuiSommesNous from "./components/QuiSommesNous";
 
 export default function Home() {
   return (
@@ -51,14 +52,19 @@ export default function Home() {
         </div>
 
         <PourquoiChoisirFormation />
-
         <Faq />
-
-        {/* qui sommes nous ? */}
-
-
+        <QuiSommesNous />
         <Footer />
       </div>
     </main>
   );
 }
+
+
+/*
+redirection vers la page contact et quiz
+utiliser resend pour faire la page contact
+ameliorer animation faq
+responsive
+qui sommes nous ?
+*/
