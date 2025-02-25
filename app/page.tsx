@@ -9,6 +9,7 @@ import RotatingImage from "./components/RotatingCard";
 import FormationModule from "./components/FormationModule";
 import PourquoiChoisirFormation from "./components/PourquoiChoisirFormation";
 import Footer from "./components/Footer";
+import Faq from "./components/Faq";
 
 export default function Home() {
   return (
@@ -51,8 +52,7 @@ export default function Home() {
 
         <PourquoiChoisirFormation />
 
-        {/* faq */}
-
+        <Faq />
 
         {/* qui sommes nous ? */}
 
