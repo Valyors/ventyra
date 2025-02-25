@@ -8,6 +8,7 @@ import TypingText from "./components/typingText";
 import RotatingImage from "./components/RotatingCard"; 
 import FormationModule from "./components/FormationModule";
 import PourquoiChoisirFormation from "./components/PourquoiChoisirFormation";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -31,14 +32,14 @@ export default function Home() {
           <RotatingImage />
         </div>
 
-        <div className="flex justify-center py-14">
+        <div className="flex justify-center py-14 relative" style={{ paddingBottom: '56.25%' }}>
           <iframe
             width="80%"
-            height="535px"
+            height="74%"
             src="https://www.youtube.com/embed/-wfVJsvnNLI?autoplay=1&mute=1&loop=1&playlist=-wfVJsvnNLI"
             allow="autoplay; encrypted-media"
             allowFullScreen
-            className="rounded-3xl"
+            className="rounded-3xl absolute top-0 left-1/2 transform -translate-x-1/2"
           ></iframe>
         </div>
 
@@ -56,6 +57,7 @@ export default function Home() {
         {/* qui sommes nous ? */}
 
 
+        <Footer />
       </div>
     </main>
   );
