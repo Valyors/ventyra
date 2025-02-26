@@ -11,7 +11,7 @@ export default function FormationModule() {
       description:
         "Découvrez les bases de la cybersécurité et pourquoi elle est essentielle dans notre monde connecté.",
       image: "/module1.png",
-      link: "https://ventyra.fr/details-formation",
+      link: "https://ventyra.fr/pages/comming-soon",
     },
     {
       id: 2,
@@ -19,35 +19,35 @@ export default function FormationModule() {
       description:
         "Présentation des bonnes pratiques pour sécuriser les mots de passe : complexité, gestionnaires, authentification multi-facteurs et risques associés.",
       image: "/module2.png",
-      link: "https://ventyra.fr/details-formation",
+      link: "https://ventyra.fr/pages/comming-soon",
     },
     {
       id: 3,
       title: "Module 3 : Déjouer le phishing",
       description: "Techniques pour identifier et éviter les tentatives de phishing, en reconnaissant les signaux d’alerte et en adoptant les bons réflexes.",
       image: "/module3.png",
-      link: "https://ventyra.fr/details-formation",
+      link: "https://ventyra.fr/pages/comming-soon",
     },
     {
       id: 4,
       title: "Module 4 : Confidentialité au travail et sécurité physique",
       description: "Bonnes pratiques pour protéger les informations sensibles et sécuriser l’accès physique aux espaces de travail.",
       image: "/module4.png",
-      link: "https://ventyra.fr/details-formation",
+      link: "https://ventyra.fr/pages/comming-soon",
     },
     {
       id: 5,
       title: "Module 5 : Gestion des connexions à distance (Télétravail)",
       description: "Mesures de sécurité pour protéger les accès à distance : VPN, authentification renforcée et bonnes pratiques en télétravail.",
       image: "/module5.png",
-      link: "https://ventyra.fr/details-formation",
+      link: "https://ventyra.fr/pages/comming-soon",
     },
     {
       id: 6,
       title: "Module 6 : Reconnaître et limiter une cyberattaque",
       description: "Méthodes pour détecter une cyberattaque et actions à entreprendre pour en limiter les impacts.",
       image: "/module6.png",
-      link: "https://ventyra.fr/details-formation",
+      link: "https://ventyra.fr/pages/comming-soon",
     },
   ];
 
