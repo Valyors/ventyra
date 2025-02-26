@@ -39,9 +39,13 @@ const Login = () => {
     }
   };
 
+  function scrollToFormation(): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <div className="flex justify-center items-center h-screen bg-[#032720]">
-      <Navbar />
+      <Navbar scrollToFormation={scrollToFormation} />
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center text-[#032720]">Se connecter</h2>
 
