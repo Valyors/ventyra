@@ -52,11 +52,11 @@ export default function FormationModule() {
   ];
 
   return (
-    <div className="text-start">
+    <div className="text-center md:text-start">
       {modules.map((module, index) => (
         <div
           key={module.id}
-          className={`flex justify-between items-center py-14 gap-14 transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#02BD92]/10 hover:border-[#02BD92] border-2 border-transparent rounded-3xl p-6 ${
+          className={`flex flex-col md:flex-row justify-between items-center py-14 gap-14 transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#02BD92]/10 hover:border-[#02BD92] border-2 border-transparent rounded-3xl p-6 ${
             index % 2 !== 0 ? "flex-row-reverse" : ""
           }`}
         >  
@@ -69,7 +69,7 @@ export default function FormationModule() {
               className="border-2 rounded-3xl border-[#02BD92] px-24 py-16"
             />
           </div>
-          <div className="w-[600px]">
+          <div className="md:w-[600px]">
             <h3 className="text-5xl font-semibold">{module.title}</h3>
             <p className="text-base text-[#9EA3BF] font-light py-8">{module.description}</p>
             <Link

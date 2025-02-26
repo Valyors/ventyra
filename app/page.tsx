@@ -23,11 +23,11 @@ export default function Home() {
   return (
     <main>
       <Navbar scrollToFormation={scrollToFormation} />
-      <div className="pt-56 px-40">
-        <div className="flex justify-between items-center">
-          <div className="text-center">
+      <div className=" pt-24 md:pt-56 md:px-40">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="text-center w-[410px] md:w-[900px] md:h-[calc(100vh-180px)] mt-20">
             <TypingText />
-            <p className="text-base text-[#9EA3BF] py-14 font-light">
+            <p className="text-base text-[#9EA3BF] pt-4 pb-8 md:py-14 font-light">
               Une formation complète avec des ateliers pratiques pour réduire les risques cyber.
             </p>
             <Link
@@ -41,7 +41,7 @@ export default function Home() {
           <RotatingImage />
         </div>
 
-        <div className="flex justify-center py-14 relative" style={{ paddingBottom: "56.25%" }}>
+        <div className="flex justify-center mt-60 md:mt-0 py-14 relative" style={{ paddingBottom: "56.25%" }}>
           <iframe
             width="80%"
             height="74%"
@@ -82,4 +82,7 @@ implementer chatbot avec n8n sur le site
 finir de remplir convention de stage ipoline
 
 enter-code fonctionne juste avec theo@gmail.com !!!
+
+envoyer mail a antoine pour proposer plusieurs dates pour les apres midi pour faire la formation (dire grosse valeur ajouter pour les etudiants) teaser un
+peu ce qu'il verront dans l'aprem, lien likedin, site web, etc
 */
