@@ -1,9 +1,11 @@
+// app/components/navbar.tsx
+
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaBars, FaTimes } from "react-icons/fa"; // Import des icônes burger et close
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,6 +38,10 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
     };
   }, [lastScrollY]);
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav
       className={`flex items-center justify-between px-4 md:px-32 py-7 bg-white shadow-md fixed top-0 left-0 w-full transition-transform duration-300 ease-in-out z-50 ${
@@ -50,8 +56,15 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
 
       {/* Navigation (Mobile) */}
       <div className="md:hidden flex items-center">
-        <button onClick={toggleMenu}>
-          <FaBars className="text-[#006C65] text-3xl" />
+        <button onClick={toggleMenu} className="relative">
+          {/* Afficher FaBars ou FaTimes selon l'état du menu avec animation de rotation */}
+          <div
+            className={`text-[#006C65] text-3xl transition-transform duration-300 transform ${
+              isMenuOpen ? "rotate-180" : ""
+            }`}
+          >
+            {isMenuOpen ? <FaTimes /> : <FaBars />}
+          </div>
         </button>
       </div>
 
@@ -82,20 +95,20 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
 
       {/* Menu Burger (Mobile) */}
       {isMenuOpen && (
-        <div className="absolute top-0 right-0 bg-white w-3/4 h-full flex flex-col items-center space-y-4 p-6 z-40 md:hidden">
-          <button onClick={toggleMenu} className="absolute top-4 right-4 text-[#006C65] text-3xl">
-            <FaTimes />
-          </button>
-          <Link href="https://ventyra.fr" className="text-[#006C65] text-xl hover:text-[#02BD92]">
+        <div className="absolute top-[115px] right-0 bg-white w-full h-[300px] flex flex-col items-center space-y-4 p-6 z-40 rounded-b-2xl md:hidden">
+          <Link href="https://ventyra.fr" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
             Accueil
           </Link>
           <button
-            onClick={scrollToFormation}
+            onClick={() => {
+              scrollToFormation();
+              closeMenu();
+            }}
             className="text-[#006C65] text-xl hover:text-[#02BD92]"
           >
             Formation
           </button>
-          <Link href="https://ventyra.fr/pages/register" className="text-[#006C65] text-xl hover:text-[#02BD92]">
+          <Link href="https://ventyra.fr/pages/register" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
             Quiz
           </Link>
           <Link href="https://ventyra.fr/pages/contact">
