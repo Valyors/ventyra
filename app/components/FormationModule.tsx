@@ -56,7 +56,7 @@ export default function FormationModule() {
       {modules.map((module, index) => (
         <div
           key={module.id}
-          className={`flex flex-col md:flex-row justify-between items-center py-14 gap-14 transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#02BD92]/10 hover:border-[#02BD92] border-2 border-transparent rounded-3xl p-6 ${
+          className={`flex flex-col md:flex-row justify-between items-center py-14 gap-14 transition-transform transform md:hover:scale-105 md:hover:shadow-xl md:hover:bg-[#02BD92]/10 md:hover:border-[#02BD92] border-2 border-transparent rounded-3xl p-6 ${
             index % 2 !== 0 ? "flex-row-reverse" : ""
           }`}
         >  

@@ -41,7 +41,7 @@ export default function Home() {
           <RotatingImage />
         </div>
 
-        <div className="flex justify-center mt-60 md:mt-0 py-14 relative" style={{ paddingBottom: "56.25%" }}>
+        <div className="flex justify-center mt-72 md:mt-0 py-14 relative" style={{ paddingBottom: "56.25%" }}>
           <iframe
             width="80%"
             height="74%"
