@@ -2,20 +2,27 @@
 
 "use client";
 
+import { useRef } from "react";
 import Navbar from "./components/navbar";
-import Link from "next/link";
 import TypingText from "./components/typingText";
-import RotatingImage from "./components/RotatingCard"; 
+import RotatingImage from "./components/RotatingCard";
 import FormationModule from "./components/FormationModule";
 import PourquoiChoisirFormation from "./components/PourquoiChoisirFormation";
 import Footer from "./components/Footer";
 import Faq from "./components/Faq";
 import QuiSommesNous from "./components/QuiSommesNous";
+import Link from "next/link";
 
 export default function Home() {
+  const formationRef = useRef<HTMLDivElement>(null);
+
+  const scrollToFormation = () => {
+    formationRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <main>
-      <Navbar />
+      <Navbar scrollToFormation={scrollToFormation} />
       <div className="pt-56 px-40">
         <div className="flex justify-between items-center">
           <div className="text-center">
@@ -34,7 +41,7 @@ export default function Home() {
           <RotatingImage />
         </div>
 
-        <div className="flex justify-center py-14 relative" style={{ paddingBottom: '56.25%' }}>
+        <div className="flex justify-center py-14 relative" style={{ paddingBottom: "56.25%" }}>
           <iframe
             width="80%"
             height="74%"
@@ -45,9 +52,11 @@ export default function Home() {
           ></iframe>
         </div>
 
-        <div className="text-center">
-          <h2 className="text-6xl pt-16 pb-5 font-semibold">Notre Formation</h2>
-          <p className="text-base text-[#9EA3BF] font-light pb-5">La formation se déroule sur une journée et est décomposé en 6 modules</p>
+        <div ref={formationRef} id="formation" className="text-center pt-16">
+          <h2 className="text-6xl pb-5 font-semibold">Notre Formation</h2>
+          <p className="text-base text-[#9EA3BF] font-light pb-5">
+            La formation se déroule sur une journée et est décomposée en 6 modules.
+          </p>
           <FormationModule />
         </div>
 
@@ -60,11 +69,15 @@ export default function Home() {
   );
 }
 
-
 /*
 redirection vers la page contact et quiz
 utiliser resend pour faire la page contact
 ameliorer animation faq
 responsive
-qui sommes nous ?
+qui sommes nous ? finaliser
+regarder pour inscription ou se trouve la base de donnée sur vercel (enfaite meme en localhost je sais pas ou ca vas)
+
+implementer chatbot avec n8n sur le site
+
+finir de remplir convention de stage ipoline
 */
