@@ -80,4 +80,6 @@ regarder pour inscription ou se trouve la base de donnée sur vercel (enfaite me
 implementer chatbot avec n8n sur le site
 
 finir de remplir convention de stage ipoline
+
+enter-code fonctionne juste avec theo@gmail.com !!!
 */

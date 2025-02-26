@@ -1,5 +1,3 @@
-// app/components/Faq.tsx
-
 "use client";
 
 import { useState } from "react";
@@ -67,15 +65,18 @@ const FAQ = () => {
                   )}
                 </motion.div>
               </button>
+
+              {/* Animation de la réponse (effet descente) */}
               {openIndex === index && (
-                <motion.p
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="text-[#9EA3BF] pt-4 pb-8 whitespace-pre-line font-light"
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="overflow-hidden text-[#9EA3BF] pt-4 pb-8 whitespace-pre-line font-light"
                 >
                   {faq.answer}
-                </motion.p>
+                </motion.div>
               )}
             </div>
           ))}
