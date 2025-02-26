@@ -8,7 +8,7 @@ const PourquoiChoisirFormation = () => {
   return (
     <div className="text-center flex flex-col items-center bg-gradient-to-b from-[#032720] to-[#032720] py-20 px-6 rounded-3xl shadow-2xl my-10">
       <motion.h2
-        className="text-6xl font-bold text-white relative"
+        className="text-5xl md:text-6xl font-bold text-white relative"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}

@@ -40,7 +40,7 @@ const TypingText = () => {
   }, [subIndex, index, phrases]);
 
   return (
-    <h1 className="text-5xl md:text-7xl font-bold w-[400px] md:w-[900px] h-[200px] text-center">
+    <h1 className="text-5xl md:text-7xl font-bold w-[390px] md:w-[900px] h-[200px] text-center">
       {text}
       <motion.span
         className="inline-block w-2 h-12 ml-1"
