@@ -73,12 +73,12 @@ export default function QuizPage() {
   if (!questions.length) return <p className="text-center mt-10">Aucune question trouvée.</p>;
 
   return (
-    <div className="max-w-2xl mx-auto mt-10">
-      <h1 className="text-2xl font-bold">Quiz</h1>
+    <div className="max-w-2xl mx-auto mt-10 flex flex-col justify-center">
+      <h1 className="text-5xl font-bold text-center">Quiz</h1>
 
       {questions.map((q, index) => (
         <div key={q.id} className="mt-4">
-          <p className="font-medium">{index + 1}. {q.text}</p>
+          <p className="font-medium text-2xl">{index + 1}. {q.text}</p>
           {q.answers.map((a) => (
             <label key={a.id} className="block mt-2">
               <input
@@ -104,7 +104,7 @@ export default function QuizPage() {
       {!submitted ? (
         <button
           onClick={handleSubmit}
-          className="mt-6 bg-blue-500 text-white px-4 py-2 rounded-lg"
+          className="bg-[#02BD92] py-3 px-4 rounded-xl text-white text-lg mt-10"
         >
           Soumettre
         </button>
@@ -113,7 +113,7 @@ export default function QuizPage() {
           <p className="text-lg font-bold">Votre score : {score} / {questions.length}</p>
           <button
             onClick={() => router.push("/pages/leaderboard")}
-            className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
+            className="mt-4 bg-[#02BD92] text-white px-4 py-2 rounded-lg"
           >
             Voir le leaderboard
           </button>

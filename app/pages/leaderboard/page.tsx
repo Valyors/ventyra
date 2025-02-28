@@ -1,11 +1,28 @@
 // app/pages/leaderboard/page.tsx
 
+"use client";
+
+import Footer from "@/app/components/Footer";
+import Navbar from "../../components/navbar";
+
 const Leaderboard = () => {
+  function scrollToFormation(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
-    <div className="container mx-auto px-4 py-6">
-      <h1 className="text-3xl font-bold">Hello, World!</h1>
+    <div className="flex flex-col h-screen">
+      <Navbar scrollToFormation={scrollToFormation} />
+        <div className="flex flex-grow flex-col items-center justify-center text-center">
+          <h1 className="text-4xl font-bold text-[#FFFFFF]">Arrive prochainement</h1>
+          <p className="text-lg text-[#9EA3BF]">Page en construction...</p>
+        </div>
+        <div className="px-44">
+          <Footer />
+        </div>
     </div>
   );
 };
 
 export default Leaderboard;
+

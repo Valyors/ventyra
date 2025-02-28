@@ -7,14 +7,14 @@ const prisma = new PrismaClient();
 async function main() {
   console.log("Seeding database...");
 
-  // Création du premier quiz
+  // Création des quiz existants
   const quiz1 = await prisma.quiz.upsert({
-    where: { order: 1 }, // Correction ici, on utilise `order` comme clé unique
+    where: { order: 1 },
     update: {},
     create: {
       title: "Sécurité des mots de passe",
       order: 1,
-      status: "UNLOCKED", // Le premier quiz est débloqué par défaut
+      status: "UNLOCKED",
       questions: {
         create: [
           {
@@ -28,52 +28,18 @@ async function main() {
               ],
             },
           },
-          {
-            text: "Pourquoi un gestionnaire de mots de passe améliore-t-il la sécurité ?",
-            answers: {
-              create: [
-                { text: "Il génère des mots de passe uniques et complexes pour chaque site", isCorrect: true },
-                { text: "Il empêche les attaques par phishing", isCorrect: false },
-                { text: "Il bloque les connexions non sécurisées", isCorrect: false },
-                { text: "Il élimine totalement le besoin de mots de passe", isCorrect: false },
-              ],
-            },
-          },
-          {
-            text: "Pourquoi l’authentification à deux facteurs (2FA) est-elle efficace contre le vol de mot de passe ?",
-            answers: {
-              create: [
-                { text: "Elle empêche totalement les attaques de hackers", isCorrect: false },
-                { text: "Elle force l’utilisateur à changer régulièrement son mot de passe", isCorrect: false },
-                { text: "Même si un attaquant vole un mot de passe, il lui manque encore un second facteur d’authentification", isCorrect: true },
-                { text: "Elle fonctionne uniquement sur les sites sécurisés en HTTPS", isCorrect: false },
-              ],
-            },
-          },
-          {
-            text: "Quel est un bon mot de passe selon les bonnes pratiques de sécurité ?",
-            answers: {
-              create: [
-                { text: '"motdepasse123"', isCorrect: false },
-                { text: '"JeanDupont1975"', isCorrect: false },
-                { text: '"t8!K$9vPz&3mQ"', isCorrect: true },
-                { text: '"soleil"', isCorrect: false },
-              ],
-            },
-          },
         ],
       },
     },
   });
 
-  // Création du deuxième quiz
   const quiz2 = await prisma.quiz.upsert({
     where: { order: 2 },
     update: {},
     create: {
       title: "Détection du phishing",
       order: 2,
-      status: "LOCKED", // Le quiz est verrouillé au départ
+      status: "LOCKED",
       questions: {
         create: [
           {
@@ -87,36 +53,29 @@ async function main() {
               ],
             },
           },
+        ],
+      },
+    },
+  });
+
+  // Ajout des nouveaux quiz
+  const quiz3 = await prisma.quiz.upsert({
+    where: { order: 3 },
+    update: {},
+    create: {
+      title: "Confidentialité au travail et sécurité physique",
+      order: 3,
+      status: "LOCKED",
+      questions: {
+        create: [
           {
-            text: "Quel est le principal objectif d’une attaque de phishing ?",
+            text: "Quelle est une bonne pratique pour éviter les fuites d’informations confidentielles ?",
             answers: {
               create: [
-                { text: "Faire planter l’ordinateur de la victime", isCorrect: false },
-                { text: "Récupérer des informations sensibles ou financières", isCorrect: true },
-                { text: "Envoyer des publicités aux victimes", isCorrect: false },
-                { text: "Installer automatiquement un antivirus sur l’appareil de la victime", isCorrect: false },
-              ],
-            },
-          },
-          {
-            text: "Quel est le meilleur moyen de se protéger contre le phishing ?",
-            answers: {
-              create: [
-                { text: "Ne jamais utiliser Internet", isCorrect: false },
-                { text: "Mettre un mot de passe très long sur ses comptes", isCorrect: false },
-                { text: "Vérifier l’expéditeur, les liens et ne jamais partager ses informations sensibles par email", isCorrect: true },
-                { text: "Installer uniquement un antivirus et ne pas se soucier des emails reçus", isCorrect: false },
-              ],
-            },
-          },
-          {
-            text: "En entreprise, quel réflexe adopter face à un email demandant des informations confidentielles ?",
-            answers: {
-              create: [
-                { text: "Répondre rapidement pour montrer son efficacité", isCorrect: false },
-                { text: "Vérifier l’authenticité de la demande auprès de l’expéditeur par un autre moyen", isCorrect: true },
-                { text: "Transférer l’email à tous ses collègues pour avoir leur avis", isCorrect: false },
-                { text: "Ouvrir les pièces jointes pour voir si elles sont légitimes", isCorrect: false },
+                { text: "Partager les documents internes uniquement avec des collègues de confiance", isCorrect: false },
+                { text: "Laisser les documents sensibles sur son bureau pour les consulter facilement", isCorrect: false },
+                { text: "Ranger les documents confidentiels dans une armoire fermée à clé", isCorrect: true },
+                { text: "Éviter d’imprimer des documents pour ne pas laisser de traces", isCorrect: false },
               ],
             },
           },
@@ -125,7 +84,57 @@ async function main() {
     },
   });
 
-  console.log(`Quiz ajouté : ${quiz1.title} & ${quiz2.title}`);
+  const quiz4 = await prisma.quiz.upsert({
+    where: { order: 4 },
+    update: {},
+    create: {
+      title: "Risques liés au télétravail",
+      order: 4,
+      status: "LOCKED",
+      questions: {
+        create: [
+          {
+            text: "Quelle est la principale fonction d’un VPN ?",
+            answers: {
+              create: [
+                { text: "Accélérer la vitesse d’internet", isCorrect: false },
+                { text: "Bloquer toutes les connexions entrantes sur un appareil", isCorrect: false },
+                { text: "Chiffrer la connexion internet et masquer l’adresse IP de l’utilisateur", isCorrect: true },
+                { text: "Supprimer les virus sur un ordinateur", isCorrect: false },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
+
+  const quiz5 = await prisma.quiz.upsert({
+    where: { order: 5 },
+    update: {},
+    create: {
+      title: "Reconnaître et limiter une cyberattaque",
+      order: 5,
+      status: "LOCKED",
+      questions: {
+        create: [
+          {
+            text: "Quel est un signe potentiel qu’un ordinateur est infecté par un malware ?",
+            answers: {
+              create: [
+                { text: "Il s’éteint immédiatement après l’ouverture d’un fichier", isCorrect: false },
+                { text: "Il devient anormalement lent et affiche des comportements étranges", isCorrect: true },
+                { text: "Il refuse d’ouvrir les fichiers Word uniquement", isCorrect: false },
+                { text: "Il affiche un écran noir en permanence", isCorrect: false },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
+
+  console.log("Quiz ajoutés avec succès.");
 }
 
 main()
