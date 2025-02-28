@@ -80,7 +80,7 @@ const Login = () => {
         </form>
 
         <p className="mt-4 text-sm text-center text-[#9EA3BF]">
-          Pas encore de compte ? <Link href="/" className="text-[#47CC88]">Créer un compte</Link>
+          Pas encore de compte ? <Link href="/pages/login" className="text-[#47CC88]">Créer un compte</Link>
         </p>
       </div>
     </div>
