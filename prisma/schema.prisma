@@ -18,7 +18,7 @@ model User {
   email    String  @unique
   password String
   quizzes  UserQuiz[]
-  groupId  Int?    @unique // L'utilisateur appartient à un seul groupe
+  groupId  Int?    // L'utilisateur appartient à un seul groupe
   group    Group?  @relation(fields: [groupId], references: [id])
 }
 

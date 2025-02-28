@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import prisma from '../../../lib/prisma'; // ta connexion Prisma
+import prisma from '../../../lib/prisma';
 
 export async function POST(req: NextRequest) {
   try {
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     // Créer un JWT
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
-    console.log("🎫 JWT généré (register) :", token); // ✅ Vérification
+    console.log("🎫 JWT généré (register) :", token);
 
     return NextResponse.json({ token }, { status: 201 });
 

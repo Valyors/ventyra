@@ -70,11 +70,8 @@ export default function Home() {
 }
 
 /*
-redirection vers la page contact et quiz
 utiliser resend pour faire la page contact
-ameliorer animation faq
-responsive
-qui sommes nous ? finaliser
+
 regarder pour inscription ou se trouve la base de donnée sur vercel (enfaite meme en localhost je sais pas ou ca vas)
 
 implementer chatbot avec n8n sur le site
