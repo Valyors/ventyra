@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ token }, { status: 201 });
   } catch (error) {
+    console.error(error);
     return new Response(
       JSON.stringify({
         error: "Une erreur s'est produite lors de l'inscription.",

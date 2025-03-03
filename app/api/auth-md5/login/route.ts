@@ -29,6 +29,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ token }, { status: 200 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Une erreur s'est produite lors de la connexion." },
       { status: 500 }
