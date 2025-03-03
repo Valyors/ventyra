@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Faq from "./components/Faq";
 import QuiSommesNous from "./components/QuiSommesNous";
 import Link from "next/link";
+import ChatbotWidget from "./components/ChatbotWidget";
 
 export default function Home() {
   const formationRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,7 @@ export default function Home() {
   return (
     <main>
       <Navbar scrollToFormation={scrollToFormation} />
-      <div className=" pt-24 md:pt-56 md:px-40 text-white">
+      <div className="pt-24 md:pt-56 md:px-40 text-white">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center w-[390px] md:w-[900px] md:h-[calc(100vh-180px)] mt-20">
             <TypingText />
@@ -65,21 +66,8 @@ export default function Home() {
         <QuiSommesNous />
         <Footer />
       </div>
+
+      <ChatbotWidget />
     </main>
   );
 }
-
-/*
-utiliser resend pour faire la page contact
-
-regarder pour inscription ou se trouve la base de donnée sur vercel (enfaite meme en localhost je sais pas ou ca vas)
-
-implementer chatbot avec n8n sur le site
-
-finir de remplir convention de stage ipoline
-
-enter-code fonctionne juste avec theo@gmail.com !!!
-
-envoyer mail a antoine pour proposer plusieurs dates pour les apres midi pour faire la formation (dire grosse valeur ajouter pour les etudiants) teaser un
-peu ce qu'il verront dans l'aprem, lien likedin, site web, etc
-*/
