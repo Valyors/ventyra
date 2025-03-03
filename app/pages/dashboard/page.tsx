@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Quiz = {
   id: string;
@@ -11,7 +12,7 @@ type Quiz = {
   status: "LOCKED" | "UNLOCKED";
 };
 
-export default function QuizPage() {
+export default function DashboardPage() {
   const [quizzes, setQuizzes] = useState<Quiz[]>([]);
 
   useEffect(() => {
@@ -21,27 +22,44 @@ export default function QuizPage() {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-4">Quiz disponibles</h1>
-      <ul className="space-y-4">
-        {quizzes.map((quiz) => (
-          <li key={quiz.id} className="flex items-center justify-between p-4 bg-gray-100 rounded-lg">
-            <span className="text-lg font-medium text-[#032720]">{quiz.title}</span>
-            <Link href={`/pages/quiz/${quiz.id}`} passHref>
-              <button
-                disabled={quiz.status === "LOCKED"}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  quiz.status === "LOCKED"
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-blue-500 text-white hover:bg-blue-600"
-                }`}
-              >
-                Commencer
-              </button>
-            </Link>
-          </li>
+    <div className="max-w-7xl mx-auto mt-10 px-4">
+      <h1 className="text-4xl font-bold text-center mb-10 text-[#FFFFFF]">
+        Dashboard
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {quizzes.map((quiz, index) => (
+          <div
+            key={quiz.id}
+            className="bg-[#032720] rounded-lg shadow-2xl overflow-hidden flex flex-col"
+          >
+            <div className="relative h-96 w-full">
+              <Image
+                src={`/module${index + 1}.png`}
+                alt={`Image du module ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4 flex flex-col flex-1 justify-between">
+              <h3 className="text-xl font-medium text-white mb-4 text-center">
+                {quiz.title}
+              </h3>
+              <Link href={`/pages/quiz/${quiz.id}`} passHref>
+                <button
+                  disabled={quiz.status === "LOCKED"}
+                  className={`w-full py-2 rounded-lg font-medium transition ${
+                    quiz.status === "LOCKED"
+                      ? "bg-[#9EA3BF] text-[#032720] cursor-not-allowed"
+                      : "bg-[#47CC88] text-white"
+                  }`}
+                >
+                  Commencer
+                </button>
+              </Link>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
