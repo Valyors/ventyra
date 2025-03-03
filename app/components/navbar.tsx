@@ -70,7 +70,7 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
 
       {/* Navigation (Desktop) */}
       <div className="hidden md:flex space-x-7 text-[#006C65]">
-        <Link href="https://ventyra.fr" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
+        <Link href="/" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
           Accueil
         </Link>
         <button
@@ -79,14 +79,14 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
         >
           Formation
         </button>
-        <Link href="https://ventyra.fr/pages/register" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
+        <Link href="/pages/register" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
           Quiz
         </Link>
       </div>
 
       {/* Bouton Contact (Desktop) */}
       <div className="hidden md:block">
-        <Link href="https://ventyra.fr/pages/contact">
+        <Link href="/pages/contact">
           <button className="px-6 py-4 ml-20 rounded-xl text-white bg-gradient-to-r from-[#02BD92] to-[#032720] hover:from-[#032720] hover:to-[#02BD92]">
             Contact
           </button>
@@ -96,7 +96,7 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
       {/* Menu Burger (Mobile) */}
       {isMenuOpen && (
         <div className="absolute top-[115px] right-0 bg-white w-full h-[300px] flex flex-col items-center space-y-4 p-6 z-40 rounded-b-2xl md:hidden">
-          <Link href="https://ventyra.fr" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
+          <Link href="/" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
             Accueil
           </Link>
           <button
@@ -108,10 +108,10 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
           >
             Formation
           </button>
-          <Link href="https://ventyra.fr/pages/register" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
+          <Link href="/pages/register" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
             Quiz
           </Link>
-          <Link href="https://ventyra.fr/pages/contact">
+          <Link href="/pages/contact">
             <button className="px-6 py-3 mt-6 rounded-xl text-white bg-gradient-to-r from-[#02BD92] to-[#032720] hover:from-[#032720] hover:to-[#02BD92]">
               Contact
             </button>

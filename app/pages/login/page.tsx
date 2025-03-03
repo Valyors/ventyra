@@ -18,7 +18,7 @@ const Login = () => {
     setError('');
 
     // Appel API Login
-    const res = await fetch('/api/auth/login', {
+    const res = await fetch('/api/auth-md5/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

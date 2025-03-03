@@ -17,7 +17,7 @@ const Register = () => {
     setError('');
 
     // Appel API Register
-    const res = await fetch('/api/auth/register', {
+    const res = await fetch('/api/auth-md5/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
