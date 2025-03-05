@@ -10,7 +10,7 @@ export default function RotatingCard() {
           src="/carte-ventyra.png"
           alt="Ventyra"
           fill
-          className="absolute rotate-[20deg] inset-0 backface-hidden object-contain md:mt-0"
+          className="absolute rotate-[20deg] inset-0 backface-hidden object-contain md:mt-0 mt-32"
         />
       </div>
     </div>

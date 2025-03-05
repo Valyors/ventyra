@@ -25,14 +25,14 @@ export default function Home() {
     <main>
       <Navbar scrollToFormation={scrollToFormation} />
       <div className="pt-24 md:pt-56 md:px-40 text-white">
-        <div className="flex flex-col md:flex-row justify-between">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start">
           <div className="text-center w-[390px] md:w-[900px] md:h-[calc(100vh-180px)] mt-20">
             <TypingText />
             <p className="text-base text-[#9EA3BF] pt-4 pb-8 md:py-14 font-light">
               Une formation complète avec des ateliers pratiques pour réduire les risques cyber.
             </p>
             <Link
-              href="https://ventyra.fr/contact"
+              href="/pages/contact"
               className="bg-[#02BD92] py-4 px-6 rounded-xl text-white text-lg relative overflow-hidden group"
             >
               <span className="absolute rounded-xl inset-0 bg-white scale-y-0 origin-center transition-transform duration-300 group-hover:scale-y-100"></span>
