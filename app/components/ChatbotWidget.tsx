@@ -1,7 +1,7 @@
 // app/components/ChatbotWidget.tsx
 import { useState, useEffect, FormEvent } from 'react';
 import { FaTimes } from "react-icons/fa";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 type ChatMessage = {
