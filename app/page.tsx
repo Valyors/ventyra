@@ -25,7 +25,7 @@ export default function Home() {
     <main>
       <Navbar scrollToFormation={scrollToFormation} />
       <div className="pt-24 md:pt-56 md:px-40 text-white">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between">
           <div className="text-center w-[390px] md:w-[900px] md:h-[calc(100vh-180px)] mt-20">
             <TypingText />
             <p className="text-base text-[#9EA3BF] pt-4 pb-8 md:py-14 font-light">

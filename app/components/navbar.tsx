@@ -1,16 +1,16 @@
-// app/components/navbar.tsx
-
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation"; // Pour Next.js 13 (app router)
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollingUp, setScrollingUp] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,27 +18,30 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (typeof window !== "undefined") {
-        const currentScrollY = window.scrollY;
-
-        // Compare la position de défilement pour savoir si on scroll vers le bas ou vers le haut
-        if (currentScrollY > lastScrollY) {
-          setScrollingUp(false); // Scroll vers le bas
-        } else {
-          setScrollingUp(true); // Scroll vers le haut
-        }
-
-        setLastScrollY(currentScrollY <= 0 ? 0 : currentScrollY); // Mettre à jour la position de défilement
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setScrollingUp(false);
+      } else {
+        setScrollingUp(true);
       }
+      setLastScrollY(currentScrollY <= 0 ? 0 : currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const closeMenu = () => {
+  const handleFormationClick = () => {
+    // Si on n'est pas sur la page d'accueil, rediriger vers "/"
+    if (window.location.pathname !== "/") {
+      router.push("/"); // redirige vers l'accueil
+      // Utiliser une petite temporisation pour laisser le temps à la page d'accueil de se charger
+      setTimeout(() => {
+        scrollToFormation();
+      }, 300);
+    } else {
+      scrollToFormation();
+    }
     setIsMenuOpen(false);
   };
 
@@ -57,7 +60,6 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
       {/* Navigation (Mobile) */}
       <div className="md:hidden flex items-center">
         <button onClick={toggleMenu} className="relative">
-          {/* Afficher FaBars ou FaTimes selon l'état du menu avec animation de rotation */}
           <div
             className={`text-[#006C65] text-3xl transition-transform duration-300 transform ${
               isMenuOpen ? "rotate-180" : ""
@@ -74,7 +76,7 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
           Accueil
         </Link>
         <button
-          onClick={scrollToFormation}
+          onClick={handleFormationClick}
           className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out"
         >
           Formation
@@ -96,19 +98,13 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
       {/* Menu Burger (Mobile) */}
       {isMenuOpen && (
         <div className="absolute top-[115px] right-0 bg-white w-full h-[300px] flex flex-col items-center space-y-4 p-6 z-40 rounded-b-2xl md:hidden">
-          <Link href="/" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
+          <Link href="/" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={() => setIsMenuOpen(false)}>
             Accueil
           </Link>
-          <button
-            onClick={() => {
-              scrollToFormation();
-              closeMenu();
-            }}
-            className="text-[#006C65] text-xl hover:text-[#02BD92]"
-          >
+          <button onClick={handleFormationClick} className="text-[#006C65] text-xl hover:text-[#02BD92]">
             Formation
           </button>
-          <Link href="/pages/register" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={closeMenu}>
+          <Link href="/pages/register" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={() => setIsMenuOpen(false)}>
             Quiz
           </Link>
           <Link href="/pages/contact">

@@ -9,9 +9,8 @@ export default function RotatingCard() {
         <Image
           src="/carte-ventyra.png"
           alt="Ventyra"
-          width={600}
-          height={600}
-          className="absolute rotate-[20deg] inset-0 backface-hidden w-[200px] h-[300px] md:w-[600px] md:h-[400px] mt-20 md:mt-0"
+          fill
+          className="absolute rotate-[20deg] inset-0 backface-hidden object-contain md:mt-0"
         />
       </div>
     </div>
