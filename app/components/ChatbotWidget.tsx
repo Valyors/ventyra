@@ -2,6 +2,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { FaTimes } from "react-icons/fa";
 import { motion } from "framer-motion"; // Import Framer Motion
+import Image from "next/image";
 
 type ChatMessage = {
   text: string;
@@ -87,7 +88,13 @@ const ChatbotWidget = () => {
           {/* En-tête */}
           <div className="flex justify-between items-center p-3 rounded-t-2xl bg-white border-b border-gray-300">
             <div className="flex items-center space-x-2">
-              <img src={chatWidgetConfig.branding.logo} alt="Logo Ventyra" className="w-6 h-6" />
+              <Image
+                src={chatWidgetConfig.branding.logo}
+                alt="Logo Ventyra"
+                width={24}  // Adjust dimensions as needed
+                height={24}
+                className="w-6 h-6"
+              />
               <span className="font-semibold text-[#47CC88]">{chatWidgetConfig.branding.name}</span>
             </div>
             <button onClick={handleToggle} className="text-gray-600 text-2xl">

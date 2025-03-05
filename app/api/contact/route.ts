@@ -34,11 +34,17 @@ export async function POST(request: Request) {
     const result = await resend.emails.send(emailData);
 
     return NextResponse.json({ success: true, result });
-  } catch (error: any) {
+   } catch (error: unknown) {
     console.error("Erreur lors de l'envoi de l'email :", error);
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+    }
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: "Unknown error" },
       { status: 500 }
     );
-  }
+  }  
 }

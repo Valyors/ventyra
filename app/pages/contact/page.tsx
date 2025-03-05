@@ -38,8 +38,13 @@ const ContactPage = () => {
       setPrenom("");
       setEmail("");
       setMessage("");
-    } catch (err: any) {
-      setError(err.message || "Erreur inconnue");
+     } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Erreur inconnue");
+      }
+        
     } finally {
       setLoading(false);
     }
