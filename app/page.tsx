@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import Faq from "./components/Faq";
 import QuiSommesNous from "./components/QuiSommesNous";
 import Link from "next/link";
-import ChatbotWidget from "./components/ChatbotWidget";
+// import ChatbotWidget from "./components/ChatbotWidget";
 
 export default function Home() {
   const formationRef = useRef<HTMLDivElement>(null);
@@ -67,7 +67,7 @@ export default function Home() {
         <Footer />
       </div>
 
-      <ChatbotWidget />
+      {/*<ChatbotWidget />*/}
     </main>
   );
 }
