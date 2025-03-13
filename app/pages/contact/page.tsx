@@ -122,7 +122,7 @@ const ContactPage = () => {
           </form>
         )}
       </div>
-      <div className="px-44">
+      <div className="md:px-44 mt-14 md:mt-0">
         <Footer />
       </div>
     </div>
