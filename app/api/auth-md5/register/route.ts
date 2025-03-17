@@ -7,7 +7,7 @@ import prisma from '../../../lib/prisma';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password } = await req.json();
+    const { email, pseudo, password } = await req.json();
 
     // Vérifier si l'email est déjà pris
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -18,10 +18,11 @@ export async function POST(req: NextRequest) {
     // Hacher le mot de passe avec MD5
     const hashedPassword = crypto.createHash('md5').update(password).digest('hex');
 
-    // Créer un nouvel utilisateur
+    // Créer un nouvel utilisateur en incluant le pseudo
     const user = await prisma.user.create({
       data: {
         email,
+        pseudo,
         password: hashedPassword,
       },
     });

@@ -14,11 +14,12 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement()) // ID auto-incrémenté
+  id       Int     @id @default(autoincrement())
   email    String  @unique
+  pseudo   String  @default("utilisateur") // valeur par défaut ajoutée
   password String
   quizzes  UserQuiz[]
-  groupId  Int?    // L'utilisateur appartient à un seul groupe
+  groupId  Int?
   group    Group?  @relation(fields: [groupId], references: [id])
 }
 

@@ -1,4 +1,4 @@
-// app/register/page.tsx
+// app/pages/register/page.tsx
 
 "use client";
 
@@ -8,6 +8,7 @@ import Navbar from '../../components/navbar';
 
 const Register = () => {
   const [email, setEmail] = useState('');
+  const [pseudo, setPseudo] = useState(''); // nouvel état pour le pseudo
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
@@ -16,13 +17,13 @@ const Register = () => {
     e.preventDefault();
     setError('');
 
-    // Appel API Register
+    // Appel API Register en incluant le pseudo
     const res = await fetch('/api/auth-md5/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, pseudo, password }),
     });
 
     const data = await res.json();
@@ -48,6 +49,17 @@ const Register = () => {
         {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
         <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-[#9EA3BF]">Pseudo</label>
+            <input
+              type="text"
+              value={pseudo}
+              onChange={(e) => setPseudo(e.target.value)}
+              className="mt-1 p-2 border border-[#9EA3BF] rounded-md w-full text-[#032720]"
+              required
+            />
+          </div>
+
           <div className="mb-4">
             <label className="block text-sm font-medium text-[#9EA3BF]">Email</label>
             <input
