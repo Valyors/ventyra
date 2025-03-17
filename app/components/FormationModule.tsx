@@ -1,5 +1,3 @@
-// app/components/FormationModule.tsx
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,38 +13,46 @@ export default function FormationModule() {
     },
     {
       id: 2,
-      title: "Module 2 : Gestion des mots de passe",
+      title: "Module 2 : OSINT",
       description:
-        "Présentation des bonnes pratiques pour sécuriser les mots de passe : complexité, gestionnaires, authentification multi-facteurs et risques associés.",
+        "Contrôlez votre présence en ligne : faites attention à ce que vous publiez et supprimez les informations sensibles.",
       image: "/module2.png",
       link: "/pages/contact",
     },
     {
       id: 3,
-      title: "Module 3 : Déjouer le phishing",
-      description: "Techniques pour identifier et éviter les tentatives de phishing, en reconnaissant les signaux d’alerte et en adoptant les bons réflexes.",
+      title: "Module 3 : Gestion des mots de passe",
+      description:
+        "Présentation des bonnes pratiques pour sécuriser les mots de passe : complexité, gestionnaires, authentification multi-facteurs et risques associés.",
       image: "/module3.png",
       link: "/pages/contact",
     },
     {
       id: 4,
-      title: "Module 4 : Confidentialité au travail et sécurité physique",
-      description: "Bonnes pratiques pour protéger les informations sensibles et sécuriser l’accès physique aux espaces de travail.",
+      title: "Module 4 : Déjouer le phishing",
+      description: "Techniques pour identifier et éviter les tentatives de phishing, en reconnaissant les signaux d’alerte et en adoptant les bons réflexes.",
       image: "/module4.png",
       link: "/pages/contact",
     },
     {
       id: 5,
-      title: "Module 5 : Gestion des connexions à distance (Télétravail)",
-      description: "Mesures de sécurité pour protéger les accès à distance : VPN, authentification renforcée et bonnes pratiques en télétravail.",
+      title: "Module 5 : Confidentialité au travail et sécurité physique",
+      description: "Bonnes pratiques pour protéger les informations sensibles et sécuriser l’accès physique aux espaces de travail.",
       image: "/module5.png",
       link: "/pages/contact",
     },
     {
       id: 6,
-      title: "Module 6 : Reconnaître et limiter une cyberattaque",
-      description: "Méthodes pour détecter une cyberattaque et actions à entreprendre pour en limiter les impacts.",
+      title: "Module 6 : Gestion des connexions à distance (Télétravail)",
+      description: "Mesures de sécurité pour protéger les accès à distance : VPN, authentification renforcée et bonnes pratiques en télétravail.",
       image: "/module6.png",
+      link: "/pages/contact",
+    },
+    {
+      id: 7,
+      title: "Module 7 : Reconnaître et limiter une cyberattaque",
+      description: "Méthodes pour détecter une cyberattaque et actions à entreprendre pour en limiter les impacts.",
+      image: "/module7.png",
       link: "/pages/contact",
     },
   ];
