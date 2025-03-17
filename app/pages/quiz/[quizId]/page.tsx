@@ -12,13 +12,16 @@ type Question = {
 };
 
 export default function QuizPage() {
-  const { quizId } = useParams(); 
+  const { quizId } = useParams();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<{ [key: string]: string }>({});
   const [score, setScore] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const router = useRouter();
+
+  // TODO: Récupérer l'ID utilisateur via ton système d'authentification
+  const userId = 1; // Remplacer par la valeur récupérée
 
   useEffect(() => {
     if (!quizId) return;
@@ -43,12 +46,12 @@ export default function QuizPage() {
   }, [quizId]);
 
   const handleSubmit = async () => {
-    console.log("Réponses soumises : ", answers); 
+    console.log("Réponses soumises : ", answers);
     try {
       const res = await fetch("/api/quiz-submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ quizId, answers }),
+        body: JSON.stringify({ quizId, answers, userId }),
       });
 
       if (!res.ok) {
