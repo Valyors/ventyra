@@ -29,6 +29,8 @@ const Register = () => {
     const data = await res.json();
 
     if (res.status === 201) {
+      // Sauvegarder le token dans le localStorage
+      localStorage.setItem("token", data.token);
       // Redirige après l'inscription réussie
       router.push('/pages/enter-code');
     } else {
