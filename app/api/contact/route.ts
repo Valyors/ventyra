@@ -23,8 +23,8 @@ export async function POST(request: Request) {
 
     // Construction du contenu de l'email en HTML
     const emailData = {
-      from: "ventyra@resend.dev", // expéditeur vérifié sur Resend
-      to: ["ventyra.cyber@gmail.com", "contact@ventyra.fr"],  // destinataires
+      from: "theo.premartin@ventyra.fr", // expéditeur vérifié sur Resend
+      to: ["ventyra.cyber@gmail.com", "contact@ventyra.fr", "theo.premartin18@gmail.com"],  // destinataires
       subject: `Nouveau message de contact de ${prenom} ${nom}`,
       html: `<p>Vous avez reçu un nouveau message de ${prenom} ${nom} (${email}) :</p>
              <p>${message}</p>`,
