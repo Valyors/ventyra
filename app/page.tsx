@@ -46,7 +46,7 @@ export default function Home() {
           <iframe
             width="80%"
             height="74%"
-            src="https://www.youtube.com/embed/-wfVJsvnNLI?autoplay=1&mute=1&loop=1&playlist=-wfVJsvnNLI"
+            src="https://www.youtube.com/embed/1ijdEgI5yx8?autoplay=1&mute=1"
             allow="autoplay; encrypted-media"
             allowFullScreen
             className="rounded-3xl absolute top-0 left-1/2 transform -translate-x-1/2"
@@ -56,7 +56,7 @@ export default function Home() {
         <div ref={formationRef} id="formation" className="text-center pt-16">
           <h2 className="text-6xl pb-5 font-semibold">Notre Formation</h2>
           <p className="text-base text-[#9EA3BF] font-light pb-5">
-            La formation se déroule sur une journée et est décomposée en 6 modules.
+            La formation se déroule sur une journée et est décomposée en 7 modules.
           </p>
           <FormationModule />
         </div>
