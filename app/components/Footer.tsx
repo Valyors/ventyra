@@ -6,14 +6,25 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div className="h-60 flex flex-col justify-center space-y-5 py-8">
-        <div className="flex flex-col md:flex-row items-center space-x-4">
+        <div className="flex flex-col md:flex-row items-center justify-between space-x-4">
             <div className="flex items-center space-x-4">
-                <Image src="/ventyra-logo.png" alt="Ventyra Logo" width={60} height={60} />
-                <span className="text-[#02BD92] text-2xl">VENTYRA</span>
+                <div className="flex items-center space-x-4">
+                    <Image src="/ventyra-logo.png" alt="Ventyra Logo" width={60} height={60} />
+                    <span className="text-[#02BD92] text-2xl">VENTYRA</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                    <p className="text-2xl font-light text-[#9EA3BF] pb-1 hidden md:block">|</p>
+                    <p className="text-lg font-light text-[#9EA3BF] mt-4 md:mt-0">Ventyra, jouez la carte de la sécurité.</p>
+                </div>
             </div>
-            <div className="flex items-center space-x-4">
-                <p className="text-2xl font-light text-[#9EA3BF] pb-1 hidden md:block">|</p>
-                <p className="text-lg font-light text-[#9EA3BF] mt-4 md:mt-0">Ventyra, jouez la carte de la sécurité.</p>
+            <div className="mt-4 md:mt-0">
+                <Image
+                    src="/qualiopi.png"
+                    alt="Certification Qualiopi"
+                    width={80}
+                    height={80}
+                    className="rounded-xl"
+                />
             </div>
         </div>
 

@@ -1,71 +1,26 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { moduleData } from "../data/moduleData";
 
 export default function FormationModule() {
-  const modules = [
-    {
-      id: 1,
-      title: "Module 1 : Introduction à la cybersécurité",
-      description:
-        "Découvrez les bases de la cybersécurité et pourquoi elle est essentielle dans notre monde connecté.",
-      image: "/module1.png",
-      link: "/pages/contact",
-    },
-    {
-      id: 2,
-      title: "Module 2 : OSINT",
-      description:
-        "Contrôlez votre présence en ligne : faites attention à ce que vous publiez et supprimez les informations sensibles.",
-      image: "/module2.png",
-      link: "/pages/contact",
-    },
-    {
-      id: 3,
-      title: "Module 3 : Gestion des mots de passe",
-      description:
-        "Présentation des bonnes pratiques pour sécuriser les mots de passe : complexité, gestionnaires, authentification multi-facteurs et risques associés.",
-      image: "/module3.png",
-      link: "/pages/contact",
-    },
-    {
-      id: 4,
-      title: "Module 4 : Déjouer le phishing",
-      description: "Techniques pour identifier et éviter les tentatives de phishing, en reconnaissant les signaux d’alerte et en adoptant les bons réflexes.",
-      image: "/module4.png",
-      link: "/pages/contact",
-    },
-    {
-      id: 5,
-      title: "Module 5 : Confidentialité au travail et sécurité physique",
-      description: "Bonnes pratiques pour protéger les informations sensibles et sécuriser l’accès physique aux espaces de travail.",
-      image: "/module5.png",
-      link: "/pages/contact",
-    },
-    {
-      id: 6,
-      title: "Module 6 : Gestion des connexions à distance (Télétravail)",
-      description: "Mesures de sécurité pour protéger les accès à distance : VPN, authentification renforcée et bonnes pratiques en télétravail.",
-      image: "/module6.png",
-      link: "/pages/contact",
-    },
-    {
-      id: 7,
-      title: "Module 7 : Reconnaître et limiter une cyberattaque",
-      description: "Méthodes pour détecter une cyberattaque et actions à entreprendre pour en limiter les impacts.",
-      image: "/module7.png",
-      link: "/pages/contact",
-    },
-  ];
+  const router = useRouter();
+
+  const navigateToModule = (moduleId: number) => {
+    router.push(`/modules/${moduleId}`);
+  };
 
   return (
-    <div className="text-center md:text-start">
-      {modules.map((module, index) => (
+    <div id="formation-modules" className="text-center md:text-start">
+      {moduleData.map((module, index) => (
         <div
           key={module.id}
-          className={`flex flex-col md:flex-row justify-between items-center py-14 gap-14 transition-transform transform md:hover:scale-105 md:hover:shadow-xl md:hover:bg-[#02BD92]/10 md:hover:border-[#02BD92] border-2 border-transparent rounded-3xl p-6 ${
-            index % 2 !== 0 ? "flex-row-reverse" : ""
+          onClick={() => navigateToModule(module.id)}
+          className={`flex flex-col md:flex-row justify-between items-center py-14 gap-14 transition-transform transform md:hover:scale-105 md:hover:shadow-xl md:hover:bg-[#02BD92]/10 md:hover:border-[#02BD92] border-2 border-transparent rounded-3xl p-6 cursor-pointer ${
+            index % 2 !== 0 ? "md:flex-row-reverse" : ""
           }`}
-        >  
+        >
           <div className="relative rounded-3xl shadow-custom-inner">
             <Image
               src={module.image}
@@ -77,13 +32,18 @@ export default function FormationModule() {
           </div>
           <div className="md:w-[600px]">
             <h3 className="text-5xl font-semibold">{module.title}</h3>
-            <p className="text-base text-[#9EA3BF] font-light py-8">{module.description}</p>
-            <Link
-              href={module.link}
-              className="bg-[#02BD92] py-4 px-6 rounded-xl text-white text-lg relative overflow-hidden group"
+            <p className="text-base text-[#9EA3BF] font-light py-8">
+              {module.description}
+            </p>
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // Empêche le déclenchement du onClick du parent
+                navigateToModule(module.id);
+              }}
+              className="inline-block bg-[#02BD92] py-4 px-6 rounded-xl text-white text-lg relative overflow-hidden group hover:bg-[#02BD92]/90 transition-colors"
             >
               Voir plus de détails
-            </Link>
+            </button>
           </div>
         </div>
       ))}

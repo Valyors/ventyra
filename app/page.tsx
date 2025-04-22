@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Faq from "./components/Faq";
 import QuiSommesNous from "./components/QuiSommesNous";
 import Link from "next/link";
+import Image from "next/image";
 // import ChatbotWidget from "./components/ChatbotWidget";
 
 export default function Home() {
@@ -51,6 +52,20 @@ export default function Home() {
             allowFullScreen
             className="rounded-3xl absolute top-0 left-1/2 transform -translate-x-1/2"
           ></iframe>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 my-10">
+          <Image 
+            src="/qualiopi.png" 
+            alt="Certification Qualiopi" 
+            className="rounded-3xl" 
+            width={150}
+            height={150}
+          />
+          <div className="text-center md:text-left max-w-md">
+            <h3 className="text-2xl font-semibold mb-2">Certifiée Qualiopi</h3>
+            <p className="text-base text-[#9EA3BF]">Ventyra propose des formations reconnues et éligibles à une prise en charge par les OPCO.</p>
+          </div>
         </div>
 
         <div ref={formationRef} id="formation" className="text-center pt-16">
