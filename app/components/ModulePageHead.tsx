@@ -1,7 +1,6 @@
 // app/components/ModulePageHead.tsx
 
 import React from 'react';
-import Head from 'next/head';
 
 interface ModulePageHeadProps {
   title: string;
@@ -10,65 +9,67 @@ interface ModulePageHeadProps {
   duration: string;
 }
 
-const ModulePageHead: React.FC<ModulePageHeadProps> = ({ 
+// Fonction pour générer les métadonnées d'un module
+const generateModuleMetadata = ({ 
   title, 
   description, 
   moduleName,
   duration
-}) => {
+}: ModulePageHeadProps) => {
   // Créer un slug à partir du nom du module
   const slug = moduleName
     .toLowerCase()
     .replace(/[^\w\s]/gi, '')
     .replace(/\s+/g, '-');
+    
+  // Données structurées pour le module
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": moduleName,
+    "description": description,
+    "provider": {
+      "@type": "Organization",
+      "name": "Ventyra",
+      "sameAs": "https://ventyra.fr"
+    },
+    "timeRequired": duration,
+    "educationalCredentialAwarded": "Certificat de formation en cybersécurité",
+    "offers": {
+      "@type": "Offer",
+      "category": "Formation professionnelle",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "EUR"
+    }
+  };
 
-  return (
-    <>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={`formation cybersécurité, ${moduleName.toLowerCase()}, sécurité informatique, ventyra`} />
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={`https://ventyra.fr/modules/${slug}`} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content="/ventyra-og-image.jpg" />
-      
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={`https://ventyra.fr/modules/${slug}`} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content="/ventyra-twitter-image.jpg" />
-      
-      {/* Schema.org markup pour ce module spécifique */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Course",
-            "name": moduleName,
-            "description": description,
-            "provider": {
-              "@type": "Organization",
-              "name": "Ventyra",
-              "sameAs": "https://ventyra.fr"
-            },
-            "timeRequired": duration,
-            "educationalCredentialAwarded": "Certificat de formation en cybersécurité",
-            "offers": {
-              "@type": "Offer",
-              "category": "Formation professionnelle",
-              "availability": "https://schema.org/InStock",
-              "priceCurrency": "EUR"
-            }
-          })
-        }}
-      />
-    </>
-  );
+  return {
+    title: title,
+    description: description,
+    keywords: `formation cybersécurité, ${moduleName.toLowerCase()}, sécurité informatique, ventyra, formation présentielle`,
+    openGraph: {
+      title: title,
+      description: description,
+      url: `https://ventyra.fr/modules/${slug}`,
+      images: [{ url: '/ventyra-og-image.jpg' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+      images: ['/ventyra-twitter-image.jpg'],
+    },
+    other: {
+      'structured-data': JSON.stringify(structuredData),
+    },
+  };
+};
+
+const ModulePageHead: React.FC<ModulePageHeadProps> = () => {
+  // Ce composant ne rend rien visuellement
+  // Il est destiné à être utilisé pour générer des métadonnées
+  return null;
 };
 
 export default ModulePageHead;
+export { generateModuleMetadata };
