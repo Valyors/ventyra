@@ -91,7 +91,7 @@ export default function ModuleDetail({ moduleId }: ModuleDetailProps) {
                     <h3 className="text-xl font-medium text-gray-900 dark:text-white">
                       {item.title}
                     </h3>
-                    <span className="text-sm font-medium text-[#02BD92] bg-[#02BD92]/10 px-3 py-1 rounded-full">
+                    <span className="text-sm font-medium text-[#02BD92] bg-[#02BD92]/10 px-3 py-1 rounded-full whitespace-nowrap">
                       {item.duration}
                     </span>
                   </div>

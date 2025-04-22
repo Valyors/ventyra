@@ -71,7 +71,7 @@ export default function Home() {
         <div ref={formationRef} id="formation" className="text-center pt-16">
           <h2 className="text-6xl pb-5 font-semibold">Notre Formation</h2>
           <p className="text-base text-[#9EA3BF] font-light pb-5">
-            La formation se déroule sur une journée et est décomposée en 7 modules.
+            La formation se déroule sur une journée (7h) et est décomposée en 7 modules.
           </p>
           <FormationModule />
         </div>
