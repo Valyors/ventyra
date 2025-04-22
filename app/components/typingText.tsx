@@ -2,15 +2,15 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 
 const TypingText = () => {
-  const phrases = [
+  const phrases = useMemo(() => [
     "Formez vos équipes pour se protéger des cybermenaces.",
     "Apprenez à repérer des attaques.",
     "Déjouez les attaques avant qu'elles ne surviennent.",
-  ];
+  ], []);
 
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);

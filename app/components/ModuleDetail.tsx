@@ -11,9 +11,9 @@ interface ModuleDetailProps {
 
 export default function ModuleDetail({ moduleId }: ModuleDetailProps) {
   const router = useRouter();
-  const module = moduleData.find((m) => m.id === moduleId);
+  const moduleItem = moduleData.find((m) => m.id === moduleId);
 
-  if (!module) {
+  if (!moduleItem) {
     return <div className="text-center py-20">Module non trouvé</div>;
   }
 
@@ -45,21 +45,21 @@ export default function ModuleDetail({ moduleId }: ModuleDetailProps) {
             Modules
           </button>
           <span className="mx-2">/</span>
-          <span className="text-[#02BD92]">{module.title}</span>
+          <span className="text-[#02BD92]">{moduleItem.title}</span>
         </div>
 
         {/* Module header */}
         <div className="mb-10">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white max-w-3xl">
-              {module.title}
+              {moduleItem.title}
             </h1>
             <span className="text-lg font-medium text-[#02BD92] bg-[#02BD92]/10 px-4 py-2 rounded-full whitespace-nowrap self-start">
-              {module.content.duration}
+              {moduleItem.content.duration}
             </span>
           </div>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-            {module.description}
+            {moduleItem.description}
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function ModuleDetail({ moduleId }: ModuleDetailProps) {
               Objectifs pédagogiques
             </h2>
             <ul className="list-disc pl-5 space-y-3">
-              {module.content.objectives.map((objective, index) => (
+              {moduleItem.content.objectives.map((objective, index) => (
                 <li key={index} className="text-gray-700 dark:text-gray-300">
                   {objective}
                 </li>
@@ -85,7 +85,7 @@ export default function ModuleDetail({ moduleId }: ModuleDetailProps) {
               Déroulé
             </h2>
             <div className="space-y-8">
-              {module.content.schedule.map((item, index) => (
+              {moduleItem.content.schedule.map((item, index) => (
                 <div key={index} className="border-l-4 border-[#02BD92] pl-6 py-2">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -116,7 +116,7 @@ export default function ModuleDetail({ moduleId }: ModuleDetailProps) {
               Évaluation
             </h2>
             <p className="text-gray-700 dark:text-gray-300">
-              {module.content.evaluation}
+              {moduleItem.content.evaluation}
             </p>
           </div>
         </div>
