@@ -68,7 +68,7 @@ export default function Team() {
   const teamMembers = [
     {
       name: "BONNET Valentin",
-      imageSrc: "/valentin.jpeg",
+      imageSrc: "/valentin-bonnet.jpg",
       description:
         "Diplômé de l'École d'Ingénieurs Polytech Angers, spécialité Cybersécurité.\nSoutenu et accompagné par Pépite Pays de la Loire.",
       linkedinUrl: "https://www.linkedin.com/in/valentinbonnet79/",

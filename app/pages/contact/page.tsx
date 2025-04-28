@@ -103,8 +103,8 @@ const ContactPage = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="w-full px-3 py-2 rounded-lg bg-transparent border border-[#9EA3BF] text-[#FFFFFF] placeholder-[#9EA3BF] focus:outline-none"
-                placeholder="Votre message..."
+                className="w-full h-40 px-3 py-2 rounded-lg bg-transparent border border-[#9EA3BF] text-[#FFFFFF] placeholder-[#9EA3BF] focus:outline-none"
+                placeholder="Comment pourrions-nous vous être utiles ?"
               />
             </div>
             {error && (
