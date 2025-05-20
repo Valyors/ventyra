@@ -10,9 +10,10 @@ import FormationModule from "./components/FormationModule";
 import PourquoiChoisirFormation from "./components/PourquoiChoisirFormation";
 import Footer from "./components/Footer";
 import Faq from "./components/Faq";
-import QuiSommesNous from "./components/QuiSommesNous";
 import Link from "next/link";
 import Image from "next/image";
+import PreuvesSociales from "./components/PreuvesSociales";
+import QualiopiCertification from "./components/QualiopiCertification";
 // import ChatbotWidget from "./components/ChatbotWidget";
 
 export default function Home() {
@@ -54,19 +55,7 @@ export default function Home() {
           ></iframe>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 my-10">
-          <Image 
-            src="/qualiopi.png" 
-            alt="Certification Qualiopi" 
-            className="rounded-3xl" 
-            width={150}
-            height={150}
-          />
-          <div className="text-center md:text-left max-w-md">
-            <h3 className="text-2xl font-semibold mb-2">Certifiée Qualiopi</h3>
-            <p className="text-base text-[#9EA3BF]">Ventyra propose des formations reconnues et éligibles à une prise en charge par les OPCO.</p>
-          </div>
-        </div>
+        <QualiopiCertification />
 
         <div ref={formationRef} id="formation" className="text-center pt-16">
           <h2 className="text-6xl pb-5 font-semibold">Notre Formation</h2>
@@ -77,8 +66,15 @@ export default function Home() {
         </div>
 
         <PourquoiChoisirFormation />
+        <PreuvesSociales />
         <Faq />
-        <QuiSommesNous />
+        <div className="flex justify-center my-12">
+          <Link href="/pages/contact">
+            <button className="bg-[#02BD92] hover:bg-[#00E5A2] text-white text-xl font-bold px-10 py-5 rounded-2xl shadow-lg transition-all duration-200">
+              Demander un devis
+            </button>
+          </Link>
+        </div>
         <Footer />
       </div>
 

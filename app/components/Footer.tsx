@@ -5,55 +5,62 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="h-60 flex flex-col justify-center space-y-5 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between space-x-4">
-            <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-4">
-                    <Image src="/ventyra-logo.png" alt="Ventyra Logo" width={60} height={60} />
-                    <span className="text-[#02BD92] text-2xl">VENTYRA</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <p className="text-2xl font-light text-[#9EA3BF] pb-1 hidden md:block">|</p>
-                    <p className="text-lg font-light text-[#9EA3BF] mt-4 md:mt-0">Ventyra, jouez la carte de la sécurité.</p>
-                </div>
-            </div>
-            <div className="mt-4 md:mt-0">
-                <Image
-                    src="/qualiopi.png"
-                    alt="Certification Qualiopi"
-                    width={80}
-                    height={80}
-                    className="rounded-xl"
-                />
-            </div>
+    <footer className="pt-10 pb-6 px-4 bg-gradient-to-b from-[#032720] to-[#032720] mt-20">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+        {/* Bloc gauche : Logo + slogan */}
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+          <div className="flex items-center gap-4">
+            <Image src="/ventyra-logo.png" alt="Ventyra Logo" width={48} height={48} />
+            <span className="text-[#02BD92] text-xl font-bold">VENTYRA</span>
+          </div>
+          <span className="hidden md:block text-xl font-light text-[#9EA3BF]">|</span>
+          <p className="text-base font-light text-[#9EA3BF] text-center md:text-left">Ventyra, jouez la carte de la sécurité.</p>
         </div>
 
-        <div>
-            <hr className="border-t-1 border-[#9EA3BF] my-4" />
+        {/* Bloc centre : Qualiopi modernisé, intégré */}
+        <div className="flex flex-col items-center">
+          <Image
+            src="/qualiopi.png"
+            alt="Certification Qualiopi"
+            width={60}
+            height={60}
+            className="rounded-xl"
+          />
+          <span className="mt-1 inline-block text-[#47CC88] text-xs font-bold">Certifié Qualiopi</span>
         </div>
 
-        <div className="flex justify-between items-center px-10 md:px-0">
-            <div className="flex flex-col">
-                <span className="text-base text-[#9EA3BF] font-light">Copyright © 2025</span>
-                <span className="text-base text-[#9EA3BF] font-light">All Rights Reserved</span>
-            </div>
-            <div>
-                <Link
-                    href="https://www.linkedin.com/company/ventyra/?viewAsMember=true" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#9EA3BF] hover:text-[#47CC88] transition"
-                >
-                    <Image
-                        src="/linkedin-logo.png"
-                        alt="LinkedIn Logo"
-                        width={40}
-                        height={40}
-                    />
-                </Link>
-            </div>
+        {/* Bloc droit : Réseaux et liens */}
+        <div className="flex flex-col items-center md:items-end gap-2">
+          <div className="flex gap-4 mb-1">
+            <Link
+              href="https://www.linkedin.com/company/ventyra/?viewAsMember=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-transform"
+            >
+              <Image
+                src="/linkedin-logo.png"
+                alt="LinkedIn Logo"
+                width={32}
+                height={32}
+              />
+            </Link>
+          </div>
+          <div className="flex gap-3 text-sm">
+            <Link href="/nos-offres" className="text-[#9EA3BF] hover:text-[#47CC88] font-light transition">Nos Offres</Link>
+            <span className="text-[#9EA3BF]">|</span>
+            <Link href="/pages/contact" className="text-[#9EA3BF] hover:text-[#47CC88] font-light transition">Contact</Link>
+          </div>
         </div>
-    </div>
+      </div>
+
+      <hr className="border-t border-[#2A3B36] my-6" />
+
+      <div className="flex flex-col md:flex-row justify-between items-center text-[#9EA3BF] text-xs font-light gap-1 md:gap-0 px-2">
+        <span>Copyright © 2025</span>
+        <span>All Rights Reserved</span>
+      </div>
+    </footer>
   );
 };
 

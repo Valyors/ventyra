@@ -33,3 +33,7 @@ body {
 .animate-spin-y {
   animation: spinY 4s linear infinite;
 }
+
+html {
+  scroll-behavior: smooth;
+}

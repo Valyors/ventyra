@@ -85,8 +85,8 @@ export default function Team() {
   ];
 
   return (
-    <div className="text-center pt-14 pb-28">
-      <h1 className="text-5xl md:text-6xl font-semibold pb-16">Qui Sommes Nous ?</h1>
+    <div id="qui-sommes-nous" className="text-center pt-14 pb-28 scroll-mt-32">
+      <h1 className="text-5xl md:text-6xl font-semibold pb-16">Qui Sommes Nous ?</h1>
       <div className="flex justify-center items-center px-4">
         <div className="flex flex-col sm:flex-row gap-6">
           {teamMembers.map((member, index) => (

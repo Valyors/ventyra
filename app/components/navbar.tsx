@@ -5,14 +5,19 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation"; // Pour Next.js 13 (app router)
+import { useRouter, usePathname } from "next/navigation"; // Pour Next.js 13 (app router)
 import { FaBars, FaTimes } from "react-icons/fa";
 
-const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
+type NavbarProps = {
+  scrollToFormation?: () => void;
+};
+
+const Navbar = ({ scrollToFormation }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollingUp, setScrollingUp] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const router = useRouter();
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -34,6 +39,7 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
   }, [lastScrollY]);
 
   const handleFormationClick = () => {
+    if (!scrollToFormation) return;
     // Si on n'est pas sur la page d'accueil, rediriger vers "/"
     if (window.location.pathname !== "/") {
       router.push("/"); // redirige vers l'accueil
@@ -74,17 +80,23 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
 
       {/* Navigation (Desktop) */}
       <div className="hidden md:flex space-x-7 text-[#006C65]">
-        <Link href="/" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
+        <Link href="/" className={`${pathname === "/" ? "font-bold text-[#02BD92] underline underline-offset-8" : ""} hover:text-[#02BD92] transition-colors duration-300 ease-in-out`}>
           Accueil
         </Link>
         <button
-          onClick={handleFormationClick}
-          className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out"
+          onClick={scrollToFormation ? handleFormationClick : undefined}
+          className={`hover:text-[#02BD92] transition-colors duration-300 ease-in-out ${pathname === "/#formation" ? "font-bold text-[#02BD92] underline underline-offset-8" : ""}`}
         >
           Formation
         </button>
-        <Link href="/pages/register" className="hover:text-[#02BD92] transition-colors duration-300 ease-in-out">
+        <Link href="/nos-offres" className={`${pathname.startsWith("/nos-offres") ? "font-bold text-[#02BD92] underline underline-offset-8" : ""} hover:text-[#02BD92] transition-colors duration-300 ease-in-out`}>
+          Nos Offres
+        </Link>
+        <Link href="/pages/register" className={`${pathname.startsWith("/pages/register") ? "font-bold text-[#02BD92] underline underline-offset-8" : ""} hover:text-[#02BD92] transition-colors duration-300 ease-in-out`}>
           Quiz
+        </Link>
+        <Link href="/qui-sommes-nous" className={`${pathname.startsWith("/qui-sommes-nous") ? "font-bold text-[#02BD92] underline underline-offset-8" : ""} hover:text-[#02BD92] transition-colors duration-300 ease-in-out`}>
+          Qui sommes-nous
         </Link>
       </div>
 
@@ -100,14 +112,20 @@ const Navbar = ({ scrollToFormation }: { scrollToFormation: () => void }) => {
       {/* Menu Burger (Mobile) */}
       {isMenuOpen && (
         <div className="absolute top-[115px] right-0 bg-white w-full h-[300px] flex flex-col items-center space-y-4 p-6 z-40 rounded-b-2xl md:hidden">
-          <Link href="/" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={() => setIsMenuOpen(false)}>
+          <Link href="/" className={`text-[#006C65] text-xl hover:text-[#02BD92] ${pathname === "/" ? "font-bold text-[#02BD92] underline underline-offset-8" : ""}`} onClick={() => setIsMenuOpen(false)}>
             Accueil
           </Link>
-          <button onClick={handleFormationClick} className="text-[#006C65] text-xl hover:text-[#02BD92]">
+          <button onClick={scrollToFormation ? handleFormationClick : undefined} className={`text-[#006C65] text-xl hover:text-[#02BD92] ${pathname === "/#formation" ? "font-bold text-[#02BD92] underline underline-offset-8" : ""}`}>
             Formation
           </button>
-          <Link href="/pages/register" className="text-[#006C65] text-xl hover:text-[#02BD92]" onClick={() => setIsMenuOpen(false)}>
+          <Link href="/nos-offres" className={`text-[#006C65] text-xl hover:text-[#02BD92] ${pathname.startsWith("/nos-offres") ? "font-bold text-[#02BD92] underline underline-offset-8" : ""}`} onClick={() => setIsMenuOpen(false)}>
+            Nos Offres
+          </Link>
+          <Link href="/pages/register" className={`text-[#006C65] text-xl hover:text-[#02BD92] ${pathname.startsWith("/pages/register") ? "font-bold text-[#02BD92] underline underline-offset-8" : ""}`} onClick={() => setIsMenuOpen(false)}>
             Quiz
+          </Link>
+          <Link href="/qui-sommes-nous" className={`text-[#006C65] text-xl hover:text-[#02BD92] ${pathname.startsWith("/qui-sommes-nous") ? "font-bold text-[#02BD92] underline underline-offset-8" : ""}`} onClick={() => setIsMenuOpen(false)}>
+            Qui sommes-nous
           </Link>
           <Link href="/pages/contact">
             <button className="px-6 py-3 mt-6 rounded-xl text-white bg-gradient-to-r from-[#02BD92] to-[#032720] hover:from-[#032720] hover:to-[#02BD92]">
