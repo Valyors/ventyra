@@ -46,9 +46,6 @@ export default function PreuvesSociales() {
       <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-12">
         {temoignages.map((t, i) => (
           <div key={i} className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center max-w-md w-full">
-            <div className="w-16 h-16 rounded-full bg-[#47CC88]/20 flex items-center justify-center mb-4">
-              <Image src="/avatar-placeholder.png" alt="Avatar" width={48} height={48} />
-            </div>
             <p className="text-[#032720] text-base font-medium mb-2 text-center">"{t.texte}"</p>
             <span className="text-[#47CC88] text-sm font-semibold">{t.nom}</span>
           </div>
